@@ -1,0 +1,127 @@
+{% extends "os/baseos.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block ostitle%} LK - OS {%endblock%}
+
+{% block os %}
+<div class="container-fluid">
+    <h1 class="mt-4">Ordem de Serviço</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/painel">Painel</a></li>
+        <li class="breadcrumb-item"><a href="/oss">Ordem de Serviço</a></li>
+        <li class="breadcrumb-item active">Cadastrar Ordem de Serviço</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            <form>
+                
+                <div class="form-row">
+
+                    <div class="col-md-4 mb-3">
+                        <label for="exampleFormControlSelect1">Cliente</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                          <option>Cliente 1</option>
+                          <option>Cliente 2</option>
+                          <option>cliente 3</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="exampleFormControlSelect1">Equipamento</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                          <option>Equipamento 1, Placa1</option>
+                          <option>Equipamento 2, Placa2</option>
+                          <option>Equipamento 3, Placa3</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="validationDefault03">Nome</label>
+                        <input type="text" class="form-control" id="validationDefault02" placeholder="Nome" value="Nome" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+
+                    <div class="col-md-4 mb-3">
+                        <label for="validationDefault01">Placa</label>
+                        <input type="text" class="form-control" id="validationDefault01" placeholder="Placa" value="Placa" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationDefault02">Marca</label>
+                        <input type="text" class="form-control" id="validationDefault02" placeholder="Marca" value="Marca" required>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="validationDefault03">Modelo</label>
+                        <input type="text" class="form-control" id="validationDefault02" placeholder="Modelo" value="Modelo" required>
+                    </div>
+                </div>
+                
+                
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputtipo">Tipo</label>
+                      <select id="inputtipo" class="form-control">
+                        <option>Preventiva</option>
+                        <option>Corretiva</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputpais">Data e hora</label>
+                        <input class="form-control" type="datetime-local" value="2020-03-27T13:45:00" id="example-datetime-local-input">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Descrição do agendamento</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Descrição do Serviço</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+
+                <div class="form-row">
+
+                    <div class="col-md-8 mb-3">
+                        <label for="exampleFormControlTextarea1">Descrição peças</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationDefault02">Custo</label>
+                        <input type="text" class="form-control" id="validationDefault02" placeholder="Marca" value="Marca" required>
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group col-md-4">
+                        <label for="inputpais">Data e hora Inicial</label>
+                        <input class="form-control" type="datetime-local" value="2020-03-27T13:45:00" id="example-datetime-local-input">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputpais">Data e hora Final</label>
+                        <input class="form-control" type="datetime-local" value="2020-03-27T13:45:00" id="example-datetime-local-input">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputtipo">Status do Serviço</label>
+                        <select id="inputtipo" class="form-control">
+                          <option>Em andamento</option>
+                          <option>Concluído</option>
+                          <option>Cancelado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

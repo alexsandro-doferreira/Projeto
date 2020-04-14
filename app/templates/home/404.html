@@ -1,0 +1,17 @@
+{% extends "auth/baseauth.html" %}
+
+{% block title %} LK - 404 {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="text-center mt-4">
+                <img class="mb-2 img-error" src="static/dist/assets/img/error-404-monochrome.svg" />
+                <p class="lead">Este URL solicitado não foi encontrado neste servidor.</p>
+                <a href="/"><i class="fas fa-arrow-left mr-1"></i>Retornar ao inicio.</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
