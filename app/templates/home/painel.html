@@ -30,7 +30,11 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">Configurações</a><a class="dropdown-item" href="#">Atividade LOG</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/login">Login</a>
+                        {% if current_user.is_authenticated %}
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        {% else %}
+                            <a class="dropdown-item" href="/login">Login</a>
+                        {% endif %}
                     </div>
                 </li>
             </ul>
@@ -78,7 +82,7 @@
                     </div>
 
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logado como:</div>
+                        <div class="small">Logado como: <h1>{{ current_user.email }}</h1> </div>
                         
                     </div>
                 </nav>

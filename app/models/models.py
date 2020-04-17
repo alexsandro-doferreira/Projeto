@@ -30,8 +30,8 @@ class Cadastro(db.Model):
     cidade = db.Column(db.String(20))
     estado = db.Column(db.String(30))
     pais = db.Column(db.String(30))
-    usuario = db.relationship('Usuario', backref='cadastros')
-    cliente = db.relationship('Cliente', backref='cadastros')
+    #usuario = db.relationship('Usuario', backref='cadastros')
+    #cliente = db.relationship('Cliente', backref='cadastros')
 
     def __init__(self, razao, fantasia, cnpj, inscricaoestadual, inscricaomunicipal, telefone, cep, rua, numero, bairro, cidade, estado, pais):
         self.razao = razao
@@ -51,26 +51,30 @@ class Cadastro(db.Model):
 class Usuario(db.Model, UserMixin):
     __tablename__ = 'usuarios'
     id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
+    nome = db.Column(db.String(100))
     email = db.Column(db.String(50))
     password_hash = db.Column(db.String(250))
-    cadastro_id = db.Column (db.Integer, db.ForeignKey('cadastros.id'), nullable=False)
+    #cadastro_id = db.Column (db.Integer, db.ForeignKey('cadastros.id'), nullable=True)
 
-    def __init__(self, email, password):
+    def __init__(self, nome, email, password):
+        self.mome = nome
         self.email = email
         self.password_hash = generate_password_hash(password)
-        self.cadastro_id = user_id
+        #self.cadastro_id = user_id
 
 class Cliente(db.Model, UserMixin):
     __tablename__ = 'clientes'
     id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
+    nome = db.Column(db.String(100))
     email = db.Column(db.String(50))
     password_hash = db.Column(db.String(250))
-    cadastro_id = db.Column(db.Integer, db.ForeignKey('cadastros.id'), nullable=False)
+    #cadastro_id = db.Column(db.Integer, db.ForeignKey('cadastros.id'), nullable=False)
 
-    def __init__(self, email, password):
+    def __init__(self, nome, email, password):
+        self.mome = nome
         self.email = email
         self.password_hash = generate_password_hash(password)
-        self.cadastro_id = user_id
+        #self.cadastro_id = user_id
 
 class Equipamento(db.Model):
     __tablename__ = 'equipamentos'
@@ -81,14 +85,14 @@ class Equipamento(db.Model):
     marca = db.Column(db.String(50))
     placa = db.Column(db.String(50))
     observacoes = db.Column(db.String(1000))
-    agenda = db.relationship('Agenda')
+    #agenda = db.relationship('Agenda')
 
 class Agenda(db.Model):
     __tablename__ = 'agendas'
     id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
     equipamento_id = db.Column(db.Integer, db.ForeignKey('equipamentos.id'), nullable=False)
     datahora = db.Column(db.DateTime)
-    os = db.relationship('Ods')
+    #os = db.relationship('Ods')
 
 class Ods(db.Model):
     __tablename__ = 'Odss'
@@ -97,5 +101,5 @@ class Ods(db.Model):
     descricao = db.Column(db.String(1000))
     pecas = db.Column(db.String(1000))
     custo = db.Column(db.String(1000))
-    datahorainicio = db.Column(db.DateTime)
-    datahoraconclusao = db.Column(db.DateTime)
+    #datahorainicio = db.Column(db.DateTime)
+    #datahoraconclusao = db.Column(db.DateTime)

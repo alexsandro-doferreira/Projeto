@@ -22,7 +22,7 @@ def registrar_get():
     
 @auth.route('/registrar', methods=['POST'])
 def registrar_post():
-    form= FormRegistro(request.form)
+    form= FormRegistro()
     if form.validate_on_submit():
         print (form.nome.data, form.email.data, form.password.data)
         try:
@@ -58,7 +58,7 @@ def login_post():
                 
                 login_user(usuario)
                 flash ('Beleza', 'success')
-                return redirect('/')        
+                return redirect('/painel')        
             else:
                 flash ('Dados invalidos!2' +str(e), 'danger')
                 return redirect('/login')
@@ -75,7 +75,7 @@ def login_post():
 def logout():
     logout_user()
     flash('Desconectado', 'success')
-    return redirect('/login')
+    return redirect('/')
 
 @auth.route('/password', methods=['GET'])
 def password_get():

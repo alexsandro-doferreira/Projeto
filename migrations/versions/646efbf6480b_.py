@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 03a254eb87f3
+Revision ID: 646efbf6480b
 Revises: 
-Create Date: 2020-03-18 19:50:59.284573
+Create Date: 2020-04-16 20:42:15.699695
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '03a254eb87f3'
+revision = '646efbf6480b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -37,18 +37,16 @@ def upgrade():
     )
     op.create_table('clientes',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('nome', sa.String(length=100), nullable=True),
     sa.Column('email', sa.String(length=50), nullable=True),
     sa.Column('password_hash', sa.String(length=250), nullable=True),
-    sa.Column('cadastro_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['cadastro_id'], ['cadastros.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('usuarios',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('nome', sa.String(length=100), nullable=True),
     sa.Column('email', sa.String(length=50), nullable=True),
     sa.Column('password_hash', sa.String(length=250), nullable=True),
-    sa.Column('cadastro_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['cadastro_id'], ['cadastros.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('equipamentos',
@@ -75,8 +73,6 @@ def upgrade():
     sa.Column('descricao', sa.String(length=1000), nullable=True),
     sa.Column('pecas', sa.String(length=1000), nullable=True),
     sa.Column('custo', sa.String(length=1000), nullable=True),
-    sa.Column('datahorainicio', sa.DateTime(), nullable=True),
-    sa.Column('datahoraconclusao', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['agenda_id'], ['agendas.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
